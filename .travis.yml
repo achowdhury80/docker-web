@@ -1,0 +1,12 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t achowdhury80/docker-web -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true achowdhury80/docker-web npm run test
+
